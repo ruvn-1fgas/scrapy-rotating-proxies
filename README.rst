@@ -1,22 +1,22 @@
 scrapy-rotating-proxies
 =======================
 
-.. image:: https://img.shields.io/pypi/v/scrapy-rotating-proxies.svg
-   :target: https://pypi.python.org/pypi/scrapy-rotating-proxies
+.. image:: <https://img.shields.io/pypi/v/scrapy-rotating-proxies.svg>
+   :target: <https://pypi.python.org/pypi/scrapy-rotating-proxies>
    :alt: PyPI Version
 
-.. image:: https://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies.svg?branch=master
-   :target: http://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies
+.. image:: <https://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies.svg?branch=master>
+   :target: <http://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies>
    :alt: Build Status
 
-.. image:: http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies/coverage.svg?branch=master
-   :target: http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies?branch=master
+.. image:: <http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies/coverage.svg?branch=master>
+   :target: <http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies?branch=master>
    :alt: Code Coverage
 
 This package provides a Scrapy_ middleware to use rotating proxies,
 check that they are alive and adjust crawling speed.
 
-.. _Scrapy: https://scrapy.org/
+.. _Scrapy: <https://scrapy.org/>
 
 License is MIT.
 
@@ -62,7 +62,6 @@ Requests with "proxy" set in their meta are not handled by
 scrapy-rotating-proxies. To disable proxying for a request set
 ``request.meta['proxy'] = None``; to set proxy explicitly use
 ``request.meta['proxy'] = "<my-proxy-address>"``.
-
 
 Concurrency
 -----------
@@ -160,7 +159,6 @@ Settings
 * ``ROTATING_PROXY_BAN_POLICY`` - path to a ban detection policy.
   Default is ``'rotating_proxies.policy.BanDetectionPolicy'``.
 
-
 FAQ
 ---
 
@@ -168,22 +166,22 @@ Q: Where to get proxy lists? How to write and maintain ban rules?
 
 A: It is up to you to find proxies and maintain proper ban rules
 for web sites; ``scrapy-rotating-proxies`` doesn't have anything built-in.
-There are commercial proxy services like https://crawlera.com/ which can
-integrate with Scrapy (see https://github.com/scrapy-plugins/scrapy-crawlera)
+There are commercial proxy services like <https://crawlera.com/> which can
+integrate with Scrapy (see <https://github.com/scrapy-plugins/scrapy-crawlera>)
 and take care of all these details.
 
 Contributing
 ------------
 
-* source code: https://github.com/TeamHG-Memex/scrapy-rotating-proxies
-* bug tracker: https://github.com/TeamHG-Memex/scrapy-rotating-proxies/issues
+* source code: <https://github.com/TeamHG-Memex/scrapy-rotating-proxies>
+* bug tracker: <https://github.com/TeamHG-Memex/scrapy-rotating-proxies/issues>
 
 To run tests, install tox_ and run ``tox`` from the source checkout.
 
-.. _tox: https://tox.readthedocs.io/en/latest/
+.. _tox: <https://tox.readthedocs.io/en/latest/>
 
 ----
 
-.. image:: https://hyperiongray.s3.amazonaws.com/define-hg.svg
-    :target: https://www.hyperiongray.com/?pk_campaign=github&pk_kwd=scrapy-rotating-proxies
+.. image:: <https://hyperiongray.s3.amazonaws.com/define-hg.svg>
+    :target: <https://www.hyperiongray.com/?pk_campaign=github&pk_kwd=scrapy-rotating-proxies>
     :alt: define hyperiongray

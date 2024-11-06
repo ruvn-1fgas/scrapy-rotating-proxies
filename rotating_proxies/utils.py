@@ -1,7 +1,9 @@
 from __future__ import absolute_import
-try:
+import sys
+
+if sys.version_info[0] < 3:
     from urllib2 import _parse_proxy
-except ImportError:
+else:
     from urllib.request import _parse_proxy
 
 
