@@ -1,18 +1,6 @@
 scrapy-rotating-proxies
 =======================
 
-.. image:: <https://img.shields.io/pypi/v/scrapy-rotating-proxies.svg>
-   :target: <https://pypi.python.org/pypi/scrapy-rotating-proxies>
-   :alt: PyPI Version
-
-.. image:: <https://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies.svg?branch=master>
-   :target: <http://travis-ci.org/TeamHG-Memex/scrapy-rotating-proxies>
-   :alt: Build Status
-
-.. image:: <http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies/coverage.svg?branch=master>
-   :target: <http://codecov.io/github/TeamHG-Memex/scrapy-rotating-proxies?branch=master>
-   :alt: Code Coverage
-
 This package provides a Scrapy_ middleware to use rotating proxies,
 check that they are alive and adjust crawling speed.
 
