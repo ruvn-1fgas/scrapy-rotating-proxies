@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 from six.moves.urllib.parse import urlsplit
 from six.moves.urllib.request import urlopen
 
-from __future__ import absolute_import
 import re
 
 import logging
