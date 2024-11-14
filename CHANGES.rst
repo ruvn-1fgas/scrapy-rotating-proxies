@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+0.6.3 (2024-11-14)
+__________________
+
+* ``request.meta["proxy_"] = proxy`` allows to set proxy for a `scrapy_tls_client` middleware.
+* added authentication support for proxies
+
 0.6.2 (2019-05-25)
 ------------------
 
