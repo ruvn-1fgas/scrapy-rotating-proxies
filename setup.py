@@ -7,7 +7,7 @@ import os
 def get_version():
     fn = os.path.join(os.path.dirname(__file__), "rotating_proxies", "__init__.py")
     with open(fn) as f:
-        return re.findall("__version__ = '([\d.\w]+)'", f.read())[0]
+        return re.findall(r"__version__ = '([\d.\w]+)'", f.read())[0]
 
 
 def get_long_description():
