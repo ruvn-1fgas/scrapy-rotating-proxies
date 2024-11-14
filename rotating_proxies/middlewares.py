@@ -162,7 +162,7 @@ class RotatingProxyMiddleware(object):
             if self.stop_if_no_proxies:
                 raise CloseSpider("no_proxies")
             else:
-                logger.warn("No proxies available; marking all proxies " "as unchecked")
+                logger.warning("No proxies available; marking all proxies as unchecked")
                 self.proxies.reset()
                 proxy = self.proxies.get_random()
                 if proxy is None:
@@ -173,6 +173,8 @@ class RotatingProxyMiddleware(object):
         if username and password:
             proxy_auth = basic_auth_header(username, password)
             request.headers["Proxy-Authorization"] = proxy_auth
+
+        request.meta["proxy_"] = proxy
         request.meta["proxy"] = proxy
         request.meta["download_slot"] = self.get_proxy_slot(proxy)
         request.meta["_rotating_proxy"] = True
@@ -242,7 +244,7 @@ class RotatingProxyMiddleware(object):
             )
 
     def log_stats(self):
-        logger.info("%s" % self.proxies)
+        logger.info("%s", self.proxies)
 
     @classmethod
     def cleanup_proxy_list(cls, proxy_list):
