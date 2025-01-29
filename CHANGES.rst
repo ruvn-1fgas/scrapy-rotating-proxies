@@ -1,7 +1,7 @@
 CHANGES
 =======
 
-0.6.4
+0.6.4 (2025-01-29)
 __________________
 
 * ``ROTATING_PROXY_LIST_X_KEY`` and ``ROTATING_PROXY_LIST_BEARER_TOKEN`` allows to use authentication for proxy list URL.

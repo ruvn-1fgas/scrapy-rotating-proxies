@@ -115,7 +115,7 @@ class RotatingProxyMiddleware(object):
             else:
                 bearer_token = s.get("ROTATING_PROXY_LIST_BEARER_TOKEN", None)
                 headers = {
-                    "X-Key": s.get("ROTATING_PROXY_LIST_RESULT_KEY", None),
+                    "X-Key": s.get("ROTATING_PROXY_LIST_X_KEY", None),
                     "Authorization": f"Bearer {bearer_token}",
                 }
 
