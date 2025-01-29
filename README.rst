@@ -148,30 +148,3 @@ Settings
   Default is 3600 (i.e. 60 min).
 * ``ROTATING_PROXY_BAN_POLICY`` - path to a ban detection policy.
   Default is ``'rotating_proxies.policy.BanDetectionPolicy'``.
-
-FAQ
----
-
-Q: Where to get proxy lists? How to write and maintain ban rules?
-
-A: It is up to you to find proxies and maintain proper ban rules
-for web sites; ``scrapy-rotating-proxies`` doesn't have anything built-in.
-There are commercial proxy services like <https://crawlera.com/> which can
-integrate with Scrapy (see <https://github.com/scrapy-plugins/scrapy-crawlera>)
-and take care of all these details.
-
-Contributing
-------------
-
-* source code: <https://github.com/TeamHG-Memex/scrapy-rotating-proxies>
-* bug tracker: <https://github.com/TeamHG-Memex/scrapy-rotating-proxies/issues>
-
-To run tests, install tox_ and run ``tox`` from the source checkout.
-
-.. _tox: <https://tox.readthedocs.io/en/latest/>
-
-----
-
-.. image:: <https://hyperiongray.s3.amazonaws.com/define-hg.svg>
-    :target: <https://www.hyperiongray.com/?pk_campaign=github&pk_kwd=scrapy-rotating-proxies>
-    :alt: define hyperiongray
