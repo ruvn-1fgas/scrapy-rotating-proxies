@@ -3,9 +3,10 @@
 from __future__ import absolute_import
 
 from six.moves.urllib.parse import urlsplit
-from six.moves.urllib.request import urlopen
+from six.moves.urllib.request import urlopen, Request
 
 import re
+import json
 
 import logging
 import codecs
@@ -63,6 +64,8 @@ class RotatingProxyMiddleware(object):
     * ``ROTATING_PROXY_LIST``  - a list of proxies to choose from;
     * ``ROTATING_PROXY_LIST_PATH``  - path to a file with a list of proxies or
       URL returning list of proxies;
+    * ``ROTATING_PROXY_LIST_X_KEY`` - auth key for the proxy list URL;
+    * ``ROTATING_PROXY_LIST_BEARER_TOKEN``- Bearer token for the proxy list URL;
     * ``ROTATING_PROXY_LOGSTATS_INTERVAL`` - stats logging interval in seconds,
       30 by default;
     * ``ROTATING_PROXY_CLOSE_SPIDER`` - When True, spider is stopped if
@@ -106,16 +109,27 @@ class RotatingProxyMiddleware(object):
         s = crawler.settings
         proxy_path = s.get("ROTATING_PROXY_LIST_PATH", None)
         if proxy_path is not None:
-            if re.match("^http", proxy_path, re.IGNORECASE):
-                with urlopen(proxy_path) as f:
-                    proxy_list = [
-                        line.decode("utf-8").strip()
-                        for line in f
-                        if line.decode("utf-8").strip()
-                    ]
-            else:
+            if not re.match("^http", proxy_path, re.IGNORECASE):
                 with codecs.open(proxy_path, "r", encoding="utf8") as f:
                     proxy_list = [line.strip() for line in f if line.strip()]
+            else:
+                bearer_token = s.get("ROTATING_PROXY_LIST_BEARER_TOKEN", None)
+                headers = {
+                    "X-Key": s.get("ROTATING_PROXY_LIST_RESULT_KEY", None),
+                    "Authorization": f"Bearer {bearer_token}",
+                }
+
+                response = urlopen(Request(proxy_path, headers=headers))
+
+                if response.info().get("Content-Type") == "application/json":
+                    proxy_list = list(json.loads(response.read().decode("utf-8")))
+                else:
+                    with response as f:
+                        proxy_list = [
+                            line.decode("utf-8").strip()
+                            for line in f
+                            if line.decode("utf-8").strip()
+                        ]
         else:
             proxy_list = s.getlist("ROTATING_PROXY_LIST")
         if not proxy_list:

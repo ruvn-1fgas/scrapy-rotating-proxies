@@ -125,9 +125,13 @@ Settings
 --------
 
 * ``ROTATING_PROXY_LIST``  - a list of proxies to choose from;
-* ``ROTATING_PROXY_LIST_PATH``  - path to a file with a list of proxies;
+* ``ROTATING_PROXY_LIST_PATH``  - path to a file with a list of proxies or
+      URL returning list of proxies;
+* ``ROTATING_PROXY_LIST_X_KEY`` - auth key for the proxy list URL;
+* ``ROTATING_PROXY_LIST_BEARER_TOKEN``- Bearer token for the proxy list URL;
 * ``ROTATING_PROXY_LOGSTATS_INTERVAL`` - stats logging interval in seconds,
   30 by default;
+* ``ROTATING_PROXY_LIST_FORMAT`` - format of ROTATING_PROXY_LIST. Defaults to ``USER:PASS@HOST:PORT``;
 * ``ROTATING_PROXY_CLOSE_SPIDER`` - When True, spider is stopped if
   there are no alive proxies. If False (default), then when there is no
   alive proxies all dead proxies are re-checked.

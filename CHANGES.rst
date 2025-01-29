@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+0.6.4
+__________________
+
+* ``ROTATING_PROXY_LIST_X_KEY`` and ``ROTATING_PROXY_LIST_BEARER_TOKEN`` allows to use authentication for proxy list URL.
+* ``ROTATING_PROXY_LIST_FORMAT`` allows to specify format of ROTATING_PROXY_LIST. Defaults to ``USER:PASS@HOST:PORT``.
+
 0.6.3 (2024-11-14)
 __________________
 
