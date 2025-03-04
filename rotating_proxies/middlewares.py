@@ -171,6 +171,7 @@ class RotatingProxyMiddleware(object):
     def process_request(self, request, spider):
         if "proxy" in request.meta and not request.meta.get("_rotating_proxy"):
             return
+
         proxy = self.proxies.get_random()
         if not proxy:
             if self.stop_if_no_proxies:
@@ -187,6 +188,27 @@ class RotatingProxyMiddleware(object):
         if username and password:
             proxy_auth = basic_auth_header(username, password)
             request.headers["Proxy-Authorization"] = proxy_auth
+
+        if "playwright" in request.meta:
+            http, url = _parse_proxy(proxy)[0::3]
+            if request.meta.get("playwright_context_kwargs"):
+                request.meta["playwright_context"] = f"proxy:{proxy}"
+                request.meta["playwright_context_kwargs"]["ignore_https_errors"] = True
+                request.meta["playwright_context_kwargs"]["proxy"] = {
+                    "server": f"{http}://{url}",
+                    "username": username,
+                    "password": password,
+                }
+            else:
+                request.meta["playwright_context"] = f"proxy:{proxy}"
+                request.meta["playwright_context_kwargs"] = {
+                    "ignore_https_errors": True
+                }
+                request.meta["playwright_context_kwargs"]["proxy"] = {
+                    "server": f"{http}://{url}",
+                    "username": username,
+                    "password": password,
+                }
 
         request.meta["proxy_"] = proxy
         request.meta["proxy"] = proxy
